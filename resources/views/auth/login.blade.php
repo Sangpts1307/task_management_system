@@ -18,6 +18,21 @@
             </div>
             <form class="space-y-6" method="POST" action="/login">
                 @csrf
+
+                {{-- Flash error từ controller --}}
+                @if(session('error'))
+                    <div class="flex items-center gap-3 bg-red-50 border border-red-200 text-red-700 rounded-lg px-4 py-3 text-sm">
+                        <span class="material-symbols-outlined text-lg">error</span>
+                        {{ session('error') }}
+                    </div>
+                @endif
+                @if(session('success'))
+                    <div class="flex items-center gap-3 bg-green-50 border border-green-200 text-green-700 rounded-lg px-4 py-3 text-sm">
+                        <span class="material-symbols-outlined text-lg">check_circle</span>
+                        {{ session('success') }}
+                    </div>
+                @endif
+
                 <div class="space-y-2">
                     <label class="text-sm font-semibold text-slate-700 dark:text-slate-300" for="email">
                         Email address

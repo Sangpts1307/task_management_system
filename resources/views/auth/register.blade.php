@@ -10,6 +10,21 @@
         </div>
         <form class="space-y-5" method="POST" action="/register">
             @csrf
+
+            {{-- Flash messages --}}
+            @if(session('error'))
+                <div class="flex items-center gap-3 bg-red-50 border border-red-200 text-red-700 rounded-lg px-4 py-3 text-sm">
+                    <span class="material-symbols-outlined text-lg">error</span>
+                    {{ session('error') }}
+                </div>
+            @endif
+            @if(session('success'))
+                <div class="flex items-center gap-3 bg-green-50 border border-green-200 text-green-700 rounded-lg px-4 py-3 text-sm">
+                    <span class="material-symbols-outlined text-lg">check_circle</span>
+                    {{ session('success') }}
+                </div>
+            @endif
+
             {{-- Full Name --}}
             <div class="flex flex-col gap-2">
                 <label class="text-slate-700 dark:text-slate-300 text-sm font-medium" for="name">Full Name</label>
